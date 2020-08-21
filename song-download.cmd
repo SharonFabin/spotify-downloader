@@ -1,3 +1,4 @@
 @echo off
-start "" cmd /C "cd /d C:\Users\<user>\PycharmProjects\spotify-downloader\venv\Scripts & activate & cd /d    C:\Users\<user>\PycharmProjects\spotify-downloader & py main.py"
+set command="cd /d "%cd%"\venv\Scripts & activate & cd /d    "%cd%" & py main.py"
+start "" cmd /C %command%
 exit

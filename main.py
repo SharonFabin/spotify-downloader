@@ -1,12 +1,12 @@
 import spotdl
 import clipboard
 from shutil import copyfile
-from os import listdir, remove
+from os import listdir, remove, mkdir
 from os.path import isfile, join
-from pathlib import Path
+from pathlib import Path, PurePath
 import ctypes
 
-path = "C:/Users/User/OneDrive/Music"
+path = Path(Path.home(), "Desktop/Music")
 
 
 def download(url: str):
@@ -17,8 +17,11 @@ def download(url: str):
                 raise Exception("Bad URL!")
             downloader = spotdl.Spotdl()
             downloader.download_track(url)
-            song_files = [f for f in listdir("./") if isfile(join("./", f)) and f != "main.py"]
-            copyfile(f"./{song_files[0]}", f"{path}/{song_files[0]}")
+            default_files = ["main.py", "setup.cmd", "song-download.cmd", ".gitignore"]
+            song_files = [f for f in listdir("./") if isfile(join("./", f)) and f not in default_files]
+            if not path.exists():
+                path.mkdir()
+            copyfile(f"./{song_files[0]}", Path(path, song_files[0]))
             remove(song_files[0])
             ctypes.windll.user32.MessageBoxW(0, f"Done downloading {song_files[0]}", "Success", 0)
     except Exception as e:
@@ -27,3 +30,4 @@ def download(url: str):
 
 if __name__ == '__main__':
     download(clipboard.paste())
+
