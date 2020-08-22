@@ -8,4 +8,4 @@ Python program to download youtube or spotify songs to Desktop/Music in your hom
 * Add song-download.cmd to PATH for quick run.
 
 # License
-[![license](https://img.shields.io/github/license/DAVFoundation/captain-n3m0.svg?style=flat-square)](https://github.com/SharonFabin/spotify-downloader/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/ritiek/spotify-downloader.svg)](https://github.com/SharonFabin/spotify-downloader/blob/master/LICENSE)
